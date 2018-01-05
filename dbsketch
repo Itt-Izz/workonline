@@ -1,0 +1,316 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 05, 2018 at 06:59 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `workonline`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client`
+--
+
+CREATE TABLE `client` (
+  `c_id` int(50) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `uname` varchar(20) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `dateRegist` date NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `con_id` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `PhoneNo` int(50) NOT NULL,
+  `c_id` int(50) NOT NULL,
+  `w_id` int(50) NOT NULL,
+  `s_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dicument`
+--
+
+CREATE TABLE `dicument` (
+  `d-id` int(50) NOT NULL,
+  `document` bigint(100) NOT NULL,
+  `w_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `field`
+--
+
+CREATE TABLE `field` (
+  `f_id` int(50) NOT NULL,
+  `fieldName` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instructions`
+--
+
+CREATE TABLE `instructions` (
+  `inst_id` int(50) NOT NULL,
+  `instructions` text NOT NULL,
+  `o_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `l_id` int(50) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `c_id` int(50) NOT NULL,
+  `w_id` int(50) NOT NULL,
+  `s_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `m_id` int(50) NOT NULL,
+  `message` varchar(20) NOT NULL,
+  `c_id` int(50) NOT NULL,
+  `w_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `o_id` int(50) NOT NULL,
+  `charge` float NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `bid` int(20) NOT NULL,
+  `c_id` int(50) NOT NULL,
+  `w_id` int(50) NOT NULL,
+  `f_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_info`
+--
+
+CREATE TABLE `order_info` (
+  `oi_id` int(50) NOT NULL,
+  `deadline` date NOT NULL,
+  `created` date NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `subject` varchar(20) NOT NULL,
+  `topic` varchar(20) NOT NULL,
+  `level` varchar(20) NOT NULL,
+  `language` varchar(20) NOT NULL,
+  `grade` varchar(20) NOT NULL,
+  `o_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stuff`
+--
+
+CREATE TABLE `stuff` (
+  `st_id` int(50) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `uname` varchar(20) NOT NULL,
+  `dateHired` date NOT NULL,
+  `salary` float NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `worker`
+--
+
+CREATE TABLE `worker` (
+  `w_id` int(50) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `uname` varchar(20) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `startDate` date NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `worker_field`
+--
+
+CREATE TABLE `worker_field` (
+  `w_id` int(50) NOT NULL,
+  `f_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`con_id`);
+
+--
+-- Indexes for table `dicument`
+--
+ALTER TABLE `dicument`
+  ADD PRIMARY KEY (`d-id`);
+
+--
+-- Indexes for table `field`
+--
+ALTER TABLE `field`
+  ADD PRIMARY KEY (`f_id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`l_id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`m_id`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`o_id`);
+
+--
+-- Indexes for table `order_info`
+--
+ALTER TABLE `order_info`
+  ADD PRIMARY KEY (`oi_id`);
+
+--
+-- Indexes for table `stuff`
+--
+ALTER TABLE `stuff`
+  ADD PRIMARY KEY (`st_id`);
+
+--
+-- Indexes for table `worker`
+--
+ALTER TABLE `worker`
+  ADD PRIMARY KEY (`w_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `c_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `con_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `dicument`
+--
+ALTER TABLE `dicument`
+  MODIFY `d-id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `field`
+--
+ALTER TABLE `field`
+  MODIFY `f_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `l_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `m_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `o_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order_info`
+--
+ALTER TABLE `order_info`
+  MODIFY `oi_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `stuff`
+--
+ALTER TABLE `stuff`
+  MODIFY `st_id` int(50) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `worker`
+--
+ALTER TABLE `worker`
+  MODIFY `w_id` int(50) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
