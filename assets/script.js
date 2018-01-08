@@ -23,8 +23,6 @@ $(function(){
     loadFile(stat,'stats.php')
     let name=document.getElementById('nam2')
     loadFile(name,'contact.php')
-    let lg=document.getElementById('log')
-    loginFile(lg,'login.php')
 
 function loadFile(ref,url){
         ref.addEventListener('click',function(event){

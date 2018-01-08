@@ -1,3 +1,8 @@
+ 
+<?php  
+session_start();
+$name=isset($_SESSION['name']) ? $_SESSION['name']:'';
+?> 
 
 <!doctype html>
 <html lang="en">
@@ -12,31 +17,11 @@
     <link href="assets/style.css" rel="stylesheet">
   </head>
   <body>
-<nav class="navbar navbar-default">
-<div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-      data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a class="navbar-brand" href="index.php">WorkFlowHub</a>
-    </div>
-    <div id="navR">
-        <ul class="nav navbar-nav navbar-right">            
-        <li><a href="#!" id="nam2">Hi<span id="nam"> Isaac Thuo</span></a></li>
-        <li><a href="#">New Messages: <span> 0</span> </a> </li>        
-        <li><a href="#!" id="log">Logout  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>      
-      </ul>
-    </div>
-</div>
- </nav>
+<?php include 'inc/header.php'; ?>
 <section id="main">  
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-2 asidep">
         <div class="list-group">
           <a href="index.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Ready Tasks <span class="badge">112</span></a>
           <div class="dropdown">
@@ -76,7 +61,7 @@
       <div class="col-md-10" id="pan"> 
         <!-- Website Overview -->
         <ol class="breadcrumb">
-               <li id="od"> <h3>Available Jobs</h3> </li>
+               <li id="od"> <h3>Available Jobs</h3><h3><?php echo $name; ?></h3> </li>
                <div id="d"> 
                   <li><em>Show First:</em>  </li>     
                 <li> <a href="#">Request</a> </li>
@@ -170,53 +155,10 @@
 
 </section>
 <a class="fix-me button" data-target="#feed" data-toggle="modal" href="">Feedback <span class="glyphicon glyphicon-comment"></span></a>    
-
-<!-- Modal -->
-<!-- Add Pages -->
-<div class="modal fade" id="feed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form action="">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span> </button>
-        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="">Page Title</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label for="">Page Body</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label for="">
-            <input type="checkbox"> Published
-            </label>
-        </div>
-        <div class="form-group">
-          <label for="">Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add some Tags...">
-        </div>
-        <div class="form-group">
-          <label for="">Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div> 
-
-<footer id="footer">
-    <p>Copyright &copy; WorkFlowHub.com 2018</p>
-</footer>
-
+<?php
+ include 'inc/feed.php';
+ include 'inc/footer.php';
+  ?>
     <script src="assets/jquery-3.2.1.min.js"></script> 
     <script src="assets/script.js"></script>     
     <script src="assets/js/bootstrap.min.js"></script>

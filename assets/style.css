@@ -16,8 +16,8 @@ body{
     margin-top: 20px;
     background-color: none;
 }
-.pan{
-    padding: 20px;
+#pan{
+    padding: 0;
     margin: 0;
 }
 .pan p{
@@ -84,12 +84,11 @@ body{
 
 /* breadcrumb */
 .breadcrumb{
-    background: none !important;
-    color: rgb(75, 44, 105)!important;
+    color: rgb(75, 44, 105);
     font-weight: bolder;
     margin: 0;
-    padding: 0;
 }
+
 .breadcrumb a{
     color: rgb(75, 44, 105);
     font-weight: bold;
@@ -101,6 +100,9 @@ body{
     float: right;
     margin: 20px 30px !important;
 
+}
+#lg{
+    color: red !important;
 }
 #d li{
     float: left;

@@ -1,12 +1,6 @@
 
         <!-- Website Overview -->
-        <ol class="breadcrumb">
-               <li id="od"> <h3>Account information</h3> </li>
-               <div id="d"> 
-                  <li>Show: </li>     
-                <li> <a href="#">Request.</a> </li>
-                <li> <a href="#">Urgent</a></li>
-              </ol> 
+        
               <div id="acc" class="form-group inputStyl breadcrumb">
                   <label for="usr">Login: <b>Izzo</b></label>
                   <p>The account was created on 01/01/2018</p><br>
