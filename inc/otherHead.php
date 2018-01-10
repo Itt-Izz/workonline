@@ -11,15 +11,17 @@
       </button>
         <a class="navbar-brand" href="index.php">WorkFlowHub</a>
     </div>
-    <div id="navR">
-        <ul class="nav navbar-nav navbar-right">    
-          <?php 
-          if(isset($_SESSION['name'])){ ?>      
-        <li><a href="#!" id="nam2">Hi <span id="nam"> <?php echo $_SESSION['name']; ?></span></a></li>
-        <li><a href="#">New Messages: <span> 0</span> </a> </li>        
-        <li><a href="php/logout.php" >Logout <span  id="lg" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>      
-  <?php } ?>
-            
+    <div>
+        <ul class="nav navbar-nav navbar-right">  
+        <li><a href="#!" id="nam2">Home</a></li>
+        <li><a href="#">Vision</a> </li>        
+        <li><a href="#" >Mission </a></li>  
+        <li><a href="#!" id="nam2">Downloads</a></li>
+        <li><a href="#">History</a> </li>        
+        <li><a href="php/logout.php" >Subjects </a></li>       
+        <li><a href="#!" id="nam2">What we do</a></li>
+        <li><a href="#">About Us</a> </li>        
+        <li><a href="#" >FAQ </a></li>                  
       </ul>
     </div>
 </div>

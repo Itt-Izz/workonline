@@ -166,31 +166,7 @@ footer{
         background-color: #c0392b;
     }
     
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* CSS talk bubble */
+}/* CSS talk bubble */
 .talk-bubble {
 	margin: 40px;
   display: inline-block;
@@ -239,11 +215,3 @@ footer{
       text-align: left;
     line-height: 1.5em;
   }
-
-
-
-
-
-
-
-

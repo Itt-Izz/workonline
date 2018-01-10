@@ -1,7 +1,12 @@
  
-<?php  
+<?php 
 session_start();
-$name=isset($_SESSION['name']) ? $_SESSION['name']:'';
+include_once('php/connection.php');
+include ('php/tasks.php');
+if (!isset($_SESSION['name'])) {
+  header('Location: login.php');
+}else {
+  
 ?> 
 
 <!doctype html>
@@ -17,6 +22,8 @@ $name=isset($_SESSION['name']) ? $_SESSION['name']:'';
     <link href="assets/style.css" rel="stylesheet">
   </head>
   <body>
+<php echo $row['subject']; ?>
+  
 <?php include 'inc/header.php'; ?>
 <section id="main">  
   <div class="container">
@@ -54,14 +61,14 @@ $name=isset($_SESSION['name']) ? $_SESSION['name']:'';
                <span class="glyphicon glyphicon-flag"></span><a href="">Specialization</a><br><br>
                <span class="glyphicon glyphicon-flag"></span> <a href="">Managing Your Acc</a><br><br>
                <span class="glyphicon glyphicon-flag"></span> <a href="">FAQ</a><br><br>
-                <span class="glyphicon glyphicon-flag"></span>  <a href="">How to Earn more</a>
+                <span class="glyphicon glyphicon-flag"></span>  <a href="">How to Earn more  </a>
              </ul> 
         </div>
     </div>
       <div class="col-md-10" id="pan"> 
         <!-- Website Overview -->
         <ol class="breadcrumb">
-               <li id="od"> <h3>Available Jobs</h3><h3><?php echo $name; ?></h3> </li>
+               <li id="od"> <h3>Available Jobs</h3><h3></h3> </li>
                <div id="d"> 
                   <li><em>Show First:</em>  </li>     
                 <li> <a href="#">Request</a> </li>
@@ -104,48 +111,27 @@ $name=isset($_SESSION['name']) ? $_SESSION['name']:'';
                     <td>2</td>                   
                     <td>45 </td>                 
                 </tr>
-                <tr>
-                    <td ><a href="">25408 <span class="badge">new</span></a></td>
-                    <td >Copytyping</td>                   
-                    <td>Article</td>                   
-                    <td>12hrs 12min </td>                   
-                    <td>Ksh. 3000</td>                   
-                    <td>Expert</td>                   
-                    <td>2</td>                   
+                <?php while(){ ?>
+                <tr> 
+                <td>   <ul class="list-group"><b>
+                        <li>Task Id:&nbsp;<a href="task_info.php"> <?php echo $row['o_id']; ?>&nbsp;&nbsp;<span class="badge">new</span></a></li> 
+                        <li>&nbsp;&nbsp;&nbsp;Subject: <small class="b"><?php echo $row['subject']; ?></small> </li>
+                        <li>&nbsp;&nbsp;&nbsp;Type: <small class="b"><?php echo $row['type']; ?></small> </li>
+                      </b>
+                      </ul>
+                    </td>
+                    <td ><?php echo $row['subject']; ?></td>                   
+                    <td><?php echo $row['topic']; ?></td>                   
+                    <td><?php echo $row['deadline']; ?></td>                   
+                    <td>Ksh. <?php echo $row['charges']; ?></td>                   
+                    <td><?php echo $row['level']; ?></td>                   
+                    <td><?php echo $row['bid']; ?></td>                   
                     <td>1 </td>                 
                 </tr>
+
+               <?php } ?>
                 
-                <tr>
-                    <td><a href="">25499 <span class="badge">new</span></a></td>
-                    <td>Photoshop</td>                   
-                    <td>Poster</td>                   
-                    <td>2hrs 20min </td>                   
-                    <td>Ksh. 1000</td>                   
-                    <td>Beginner</td>                   
-                    <td>2</td>                   
-                    <td> </td>                 
-                </tr>
-                <tr>
-                    <td><a href="">25409 <span class="badge">new</span></a></td>
-                    <td>Data Entry</td>                   
-                    <td>Picture to Excel</td>                   
-                    <td>1 days 2hrs 59min </td>                   
-                    <td>Ksh. 1500</td>                   
-                    <td>Normal</td>                   
-                    <td>2</td>                   
-                    <td> </td>                 
-                </tr>
-                <tr>
-                    <td>25769</td>
-                    <td>Article</td>                   
-                    <td>Web on farming</td>                   
-                    <td> 2hrs 2min </td>                   
-                    <td>Ksh. 2000</td>                   
-                    <td>Normal</td>                   
-                    <td>0</td>                   
-                    <td>3</td>                 
-                </tr>
-                
+               
               </table>
               </div>
           </div>
@@ -164,3 +150,4 @@ $name=isset($_SESSION['name']) ? $_SESSION['name']:'';
     <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
+<?php }?>

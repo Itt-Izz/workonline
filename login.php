@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['name'])) {
+  header('Location: index.php');
+}else {
+
+  ?>
     <!doctype html>
 <html lang="en">
   <head>
@@ -11,11 +18,16 @@
     <link href="assets/style.css" rel="stylesheet">
   </head>
   <body>
-<?php include 'inc/header.php'; ?>   
-    <form class="form-horizontal" method='POST' action='php/log.php'>
+<?php include 'inc/header.php'; ?>  
+    <form class="form-horizontal" method='POST' action='php/log.php'> 
                 <fieldset>
                 <!-- Form Name -->
-                <legend>Login</legend>
+                <legend>
+      <?php $url = "http://" . $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+            if (strpos($url, 'error')) {
+              echo "<span style='color: red;'> Username and password mismatch. Please Try again</span>";
+            } ?><br>Login
+                      </legend>
                 <!-- Text input-->
                 <div class="form-group">
                   <label class="col-md-4 control-label">Username</label>  
@@ -49,5 +61,5 @@
     <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
-
+<?php }?>
   
